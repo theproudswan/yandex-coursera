@@ -10,6 +10,7 @@
 Json::Document XmlToJson(const Xml::Document& doc) {
   using std::vector;
   using std::string;
+  using std::map;
 
   vector<Json::Node> result;
 
