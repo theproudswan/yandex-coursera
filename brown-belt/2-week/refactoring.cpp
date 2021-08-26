@@ -24,7 +24,7 @@ Json::Document XmlToJson(const Xml::Document& doc) {
   return {Json::Document(Json::Node(std::move(result)))};
 }
 
-Xml::Document JsonToXml(const Json::Document& doc, string root_name) {
+Xml::Document JsonToXml(const Json::Document& doc, std::string root_name) {
   Xml::Node root(move(root_name), {});
   for (const Json::Node& n : doc.GetRoot().AsArray()) {
     root.AddChild(Xml::Node("spend", {
@@ -65,6 +65,9 @@ void TestXmlToJson() {
 void TestJsonToXml() {
   using Json::Node;
   using Json::Document;
+  using std::map;
+  using std::string;
+  using std::vector;
 
   const Document json_doc{Node(vector<Node>{
     Node(map<string, Node>{
