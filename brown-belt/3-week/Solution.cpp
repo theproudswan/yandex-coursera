@@ -4,8 +4,8 @@
 
 using namespace std;
 
-// Этот файл сдаётся на проверку
-// Здесь напишите реализацию необходимых классов-потомков `IShape`
+// ГќГІГ®ГІ ГґГ Г©Г« Г±Г¤Г ВёГІГ±Гї Г­Г  ГЇГ°Г®ГўГҐГ°ГЄГі
+// Г‡Г¤ГҐГ±Гј Г­Г ГЇГЁГёГЁГІГҐ Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГѕ Г­ГҐГ®ГЎГµГ®Г¤ГЁГ¬Г»Гµ ГЄГ«Г Г±Г±Г®Гў-ГЇГ®ГІГ®Г¬ГЄГ®Гў `IShape`
 class Shape : public IShape{
 public:
 
@@ -24,7 +24,7 @@ public:
 	}
 
 	virtual void SetTexture(shared_ptr<ITexture> texture_) override {
-		texture = move(texture_); // Здесь мб move(texture_)
+		texture = move(texture_); // Г‡Г¤ГҐГ±Гј Г¬ГЎ move(texture_)
 	}
 	virtual ITexture* GetTexture() const override {
 		return texture.get();
@@ -43,7 +43,7 @@ public:
 			{position.x + texture_size.width, position.y + texture_size.height}
 		};
 
-		for (int y = border.first.y; y < border.second.y && image.size(); ++y){
+		for (int y = border.first.y; y < border.second.y && y < image.size(); ++y){
 			for (int x = border.first.x; x < border.second.x && x < image[y].size(); ++x){
 				if(Contains({x, y})){
 					auto color = y < texture_border.second.y && x < texture_border.second.x
@@ -54,7 +54,7 @@ public:
 			}
 		}
 	}
-protected: // Так дочерние классы смогут получить доступ к полям
+protected: // Г’Г ГЄ Г¤Г®Г·ГҐГ°Г­ГЁГҐ ГЄГ«Г Г±Г±Г» Г±Г¬Г®ГЈГіГІ ГЇГ®Г«ГіГ·ГЁГІГј Г¤Г®Г±ГІГіГЇ ГЄ ГЇГ®Г«ГїГ¬
 	Size size;
 	shared_ptr<ITexture> texture;
 	Point position;
@@ -98,7 +98,7 @@ private:
 	}
 };
 
-// Напишите реализацию функции
+// ГЌГ ГЇГЁГёГЁГІГҐ Г°ГҐГ Г«ГЁГ§Г Г¶ГЁГѕ ГґГіГ­ГЄГ¶ГЁГЁ
 unique_ptr<IShape> MakeShape(ShapeType shape_type) {
 	switch (shape_type){
 	case ShapeType::Ellipse:
